@@ -8,6 +8,7 @@ from Crypto.Random import get_random_bytes
 data_encrypter = aes_cipher.DataEncrypter()
 data_decrypter = aes_cipher.DataDecrypter()
 
+# Метод шифрования файлов
 def encrypt_file(file, key):
     with open(file, 'rb') as f:
         data = f.read()
@@ -15,6 +16,7 @@ def encrypt_file(file, key):
         with open(file, 'wb') as f:
             f.write(data_encrypter.encrypted_data)
 
+# Метод дешифрования файлов
 def decrypt_file(file, key):
     with open(file, 'rb') as f:
         data = f.read()
@@ -22,6 +24,7 @@ def decrypt_file(file, key):
         with open(file, 'wb') as f:
             f.write(data_decrypter.decrypted_data)
 
+# Метод генерации и шифрования ключа
 def pass_generation():
     key = get_random_bytes(16) # Генерируем ключ шифрования
 
@@ -37,6 +40,7 @@ def pass_generation():
 
     print('Файл с ключем сформирован.')
 
+# Метод выбора варианта работы с файлом
 def check_value(file, key):
     try:
         choice = input('1. Шифровка\n2. Расшифровка\nСделайте выбор: ')
